@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MI BASURA, MIS ÁTOMOS</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <h1>♻️ Mi Basura, Mis Átomos</h1>
+
+    <section class="intro">
+        <p>
+            Cada residuo que generamos tiene un tiempo distinto para degradarse y reintegrarse a la naturaleza. 
+            Mientras algunos, como restos orgánicos, pueden desaparecer en cuestión de semanas o meses, 
+            otros, como el vidrio o ciertos plásticos, pueden permanecer intactos durante cientos o incluso 
+            miles de años. Conocer estos tiempos es fundamental para comprender el impacto ambiental de 
+            nuestros hábitos y la importancia de reducir, reutilizar y reciclar.
+        </p>
+    </section>
+
+    <section class="seleccion">
+        <h2>Selecciona un tipo de residuo:</h2>
+        <button onclick="mostrarInfo('plastico')">Plástico</button>
+        <button onclick="mostrarInfo('papel')">Papel</button>
+        <button onclick="mostrarInfo('organico')">Orgánico</button>
+        <button onclick="mostrarInfo('vidrio')">Vidrio</button>
+        <button onclick="mostrarInfo('metales')">Metales</button>
+        <button onclick="mostrarInfo('peligroso')">Peligrosos</button>
+    </section>
+
+    <section id="infoResiduo" class="info">
+        <div id="molVisual"></div>
+    </section>
+
+    <section class="quiz">
+        <h2>Quiz de Clasificación de Residuos</h2>
+        <div id="pregunta"></div>
+        <div id="opciones"></div>
+        <p id="resultadoQuiz"></p>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
