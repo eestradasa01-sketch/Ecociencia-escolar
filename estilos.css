@@ -54,17 +54,26 @@ button:hover{
 
 .contenedor-imagen {
   text-align: center;
+  margin: 0 auto;
 }
 
 .imagen-molecula {
   display: block;
   margin: 10px auto;
-  width: 350px;
+  max-width: 350px;
   height: 250px;
   object-fit: contain;
   border: 1px dashed #ccc;
   border-radius: 8px;
   background-color: #f0f8ff;
+}
+
+@media (max-width: 600px) {
+  .imagen-molecula {
+    width: 100%;
+    height: auto;
+    max-width: 350px;
+  }
 }
 
 .intro {
@@ -77,4 +86,8 @@ button:hover{
   border-radius: 8px;
 }
 
-
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0px;
+}
