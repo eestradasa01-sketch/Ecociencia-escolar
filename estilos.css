@@ -52,20 +52,31 @@ button:hover{
     margin-top: 20px;
 }
 
+.fuente {
+  font-size: 0.85rem;
+  margin-top: 8px;
+  color: #333;
+}
+
 .contenedor-imagen {
   text-align: center;
-  margin: 0 auto;
+  margin: 15px auto;
+  max-width: 400px;
+  width: 90%;
+  background-color: #f0f8ff;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  padding: 10px;
 }
 
 .imagen-molecula {
-  display: block;
-  margin: 10px auto;
-  max-width: 350px;
+  width: 350px;
   height: 250px;
   object-fit: contain;
-  border: 1px dashed #ccc;
-  border-radius: 8px;
-  background-color: #f0f8ff;
+  background-color: white;
+  border-radius: 6px;
+  display: block;
+  margin: 0 auto;
 }
 
 @media (max-width: 600px) {
@@ -73,6 +84,7 @@ button:hover{
     width: 100%;
     height: auto;
     max-width: 350px;
+    aspect-ratio: 7 / 5;
   }
 }
 
