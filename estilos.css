@@ -122,7 +122,7 @@ button:hover{
 }
 
 .contenedor {
-  flex: 1 1 180px;
+  flex: 1 1 150px;
   padding: 15px;
   border-radius: 8px;
   color: white;
@@ -140,8 +140,9 @@ button:hover{
 .contenedor.verde { background: #2ecc71; }
 .contenedor.azul { background: #3498db; }
 .contenedor.amarillo { background: #f1c40f; color: black; }
+.contenedor.blanco { background: white; color: black;}
 .contenedor.marron { background: #8e5a2b; }
-.contenedor.gris { background: #7f8c8d; }
+.contenedor.rojo { background: red; }
 
 
 .procesos {
