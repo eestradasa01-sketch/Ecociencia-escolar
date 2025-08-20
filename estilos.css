@@ -154,3 +154,10 @@ button:hover{
   margin-left: 20px;
 }
 
+footer {
+  text-align: center;
+  background: olivedrab;
+  color: white;
+  padding: 10px;
+  margin-top: 20px;
+}
