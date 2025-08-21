@@ -3,106 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MI BASURA, MIS ÁTOMOS</title>
+    <title>ECOCIENCIA ESCOLAR</title>
     <link rel="icon" type="image/png" href="reciclar-senal.png">
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
     <div class="container">
-    <h1>♻️ Mi Basura, Mis Átomos</h1>
+    <h1>♻️ Ecociencia Escolar</h1>
 
     <section class="intro">
         <p>
-            Cada residuo que generamos tiene un tiempo distinto para degradarse y reintegrarse a la naturaleza. 
-            Mientras algunos, como restos orgánicos, pueden desaparecer en cuestión de semanas o meses, 
-            otros, como el vidrio o ciertos plásticos, pueden permanecer intactos durante cientos o incluso 
-            miles de años. Conocer estos tiempos es fundamental para comprender el impacto ambiental de 
-            nuestros hábitos y la importancia de reducir, reutilizar y reciclar.
+            Bienvenidos a esta página web interactiva elaborada por los alumnos de 3° "B" de Secundaria
+            pertenecientes a la Institución Educativa "Santa Sofía", la cual tiene como objetivo informar
+            sobre el efecto del mal uso de los residuos sólidos en el plantel escolar, causas y consecuencias
+            de la contaminación en este, así como brindar acciones y consejos para mitigar este problema.
         </p>
     </section>
 
-    <section class="seleccion">
-        <h2>Selecciona un Tipo de Residuo:</h2>
-        <button onclick="mostrarInfo('plastico')">Plástico</button>
-        <button onclick="mostrarInfo('papel')">Papel</button>
-        <button onclick="mostrarInfo('organico')">Orgánico</button>
-        <button onclick="mostrarInfo('vidrio')">Vidrio</button>
-        <button onclick="mostrarInfo('metales')">Metales</button>
-        <button onclick="mostrarInfo('peligroso')">Peligrosos</button>
-    </section>
-
-    <section id="infoResiduo" class="info">
-        <div id="molVisual"></div>
-    </section>
-
-    <section class="residuos-color">
-        <h2>Distribución de los Residuos Según el Color</h2>
-        <div class="contenedores-residuos">
-            <div class="contenedor verde">
-                <span class="titulo">Verde</span>
-                <p>Vidrio</p>
-            </div>
-            <div class="contenedor azul">
-                <span class="titulo">Azul</span>
-                <p>Papel y cartón</p>
-            </div>
-            <div class="contenedor amarillo">
-                <span class="titulo">Amarillo</span>
-                <p>Metales</p>
-            </div>
-            <div class="contenedor blanco">
-                <span class="titulo">Blanco</span>
-                <p>Plásticos</p>
-            </div>
-            <div class="contenedor marron">
-                <span class="titulo">Marrón</span>
-                <p>Residuos orgánicos</p>
-            </div>
-            <div class="contenedor rojo">
-                <span class="titulo">Rojo</span>
-                <p>Residuos peligrosos</p>
-            </div>
+    <section class="aprendizaje">
+        <h2>¿Qué deseas aprender hoy?</h2>
+        <div class="grid-aprendizaje">
+            <a href="causas.html" class="card">
+                <h3>Causas</h3>
+                <p>Causas de la contaminación en el plantel escolar</p>
+            </a>
+            <a href="consecuencias.html" class="card">
+                <h3>Consecuencias</h3>
+                <p>Impactos negativos de la contaminación en la escuela</p>
+            </a>
+            <a href="composicion.html" class="card">
+                <h3>Composición</h3>
+                <p>Residuos comunes en la escuela</p>
+            </a>
+            <a href="tiempo.html" class="card">
+                <h3>Tiempo</h3>
+                <p>Tiempo de descomposición de los residuos</p>
+            </a>
+            <a href="acciones.html" class="card">
+                <h3>Acciones</h3>
+                <p>Acciones y consejos para reducir residuos</p>
+            </a>
+            <a href="quizz.html" class="card">
+                <h3>Diviértete</h3>
+                <p>Juegos y actividades para aprender reciclando</p>
+            </a>
         </div>
     </section>
-
-    <section class="procesos">
-        <h2>Procesos de Reciclaje y Composta</h2>
-            <div class="proceso">
-                <h3>♻️ Reciclaje</h3>
-                <ol>
-                    <li>Recolección</li>
-                    <li>Separación</li>
-                    <li>Limpieza</li>
-                    <li>Transformación</li>
-                    <li>Producción de nuevos productos</li>
-                </ol>
-            </div>
-            <div class="proceso">
-                <h3>🌱 Composta</h3>
-                <ol>
-                    <li>Recolección de residuos orgánicos</li>
-                    <li>Trituración</li>
-                    <li>Fermentación</li>
-                    <li>Maduración</li>
-                    <li>Uso como abono</li>
-                </ol>
-            </div>
-    </section>
-
-    <section class="quiz">
-        <h2>Quiz de Clasificación de Residuos</h2>
-        <div id="pregunta"></div>
-        <div id="opciones"></div>
-        <p id="resultadoQuiz"></p>
-    </section>
-
-    <script src="script.js"></script>
     </div>
 </body>
 <footer class="footer">
-        <div class="footer-contenido">
-            <p>© 2025 Mi Basura, Mis Átomos. Todos los derechos reservados.</p>
-            <p>Desarrollado con fines educativos</p>
-        </div>
+    <div class="footer-contenido">
+        <p>© 2025 Ecociencia Escolar. Todos los derechos reservados.</p>
+        <p>Desarrollado con fines educativos</p>
+    </div>
 </footer>
 </html>
