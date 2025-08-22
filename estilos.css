@@ -186,10 +186,35 @@ button:hover {
 }
 
 /* =========================
+   BOTÓN VOLVER
+========================= */
+.volver-container {
+  text-align: center;
+  margin: 20px 0; /* Espacio arriba y abajo */
+}
+
+.btn-volver {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #66bb6a;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-volver:hover {
+  background: #388e3c;
+  transform: translateY(-2px);
+}
+
+/* =========================
    FOOTER
 ========================= */
 .footer {
-  background-color: #2c3e50;
+  background-color: #2e7d32;
   color: white;
   text-align: center;
   padding: 10px 0;
@@ -209,6 +234,7 @@ button:hover {
   max-width: 1300px;
   margin: 0 auto;
   padding: 20px;
+  flex: 1;
 }
 
 /* =========================
