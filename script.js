@@ -109,6 +109,7 @@ function mostrarInfo(tipo){
   `;
 }
 
+// Quizz
 const preguntas = [
   {
     texto: "¿Dónde se debe botar el papel?",
@@ -188,7 +189,6 @@ function verificarRespuesta(respuestaSeleccionada) {
     resultado.style.color = "red";
   }
 
-  // Esperar un momento antes de pasar a la siguiente
   setTimeout(() => {
     preguntaActual++;
     if (preguntaActual < preguntas.length) {
@@ -206,5 +206,130 @@ function mostrarResultadoFinal() {
   document.getElementById("resultadoQuiz").style.color = "#000";
 }
 
-// Mostrar la primera pregunta automáticamente al cargar
 window.onload = mostrarPregunta;
+
+// Sopa de Letras
+document.addEventListener('DOMContentLoaded', () => {
+  const palabras = ["RECICLAJE","PLASTICO","VIDRIO","PAPEL","AGUA","TIERRA","ENERGIA","ORGANICO"];
+
+  const filas = 12, columnas = 12;
+  const gridContainer = document.getElementById("sopaLetras");
+  const listaPalabras = document.getElementById("listaPalabras");
+  const resultado = document.getElementById("resultadoSopa");
+
+  const grid = Array.from({ length: filas }, () => Array.from({ length: columnas }, () => ''));
+
+  const DIRS = [
+    [1,0],[0,1],[1,1],
+    [-1,0],[0,-1],[-1,-1],
+    [1,-1],[-1,1]
+  ];
+
+  const dentro = (r,c) => r>=0 && r<filas && c>=0 && c<columnas;
+
+  function puedeColocar(p, r, c, dr, dc) {
+    for (let i=0; i<p.length; i++) {
+      const rr = r + dr*i, cc = c + dc*i;
+      if (!dentro(rr,cc)) return false;
+      const celda = grid[rr][cc];
+      if (celda && celda !== p[i]) return false;
+    }
+    return true;
+  }
+
+  function colocarPalabra(p) {
+    const intentos = 800;
+    for (let t=0; t<intentos; t++) {
+      const [dr,dc] = DIRS[Math.floor(Math.random()*DIRS.length)];
+      const r0 = dr===1 ? 0 : dr===-1 ? p.length-1 : 0;
+      const r1 = dr===1 ? filas - p.length : dr===-1 ? filas-1 : filas-1;
+      const c0 = dc===1 ? 0 : dc===-1 ? p.length-1 : 0;
+      const c1 = dc===1 ? columnas - p.length : dc===-1 ? columnas-1 : columnas-1;
+
+      const r = Math.floor(Math.random() * (r1 - r0 + 1)) + r0;
+      const c = Math.floor(Math.random() * (c1 - c0 + 1)) + c0;
+
+      if (puedeColocar(p, r, c, dr, dc)) {
+        for (let i=0; i<p.length; i++) {
+          grid[r + dr*i][c + dc*i] = p[i];
+        }
+        return true;
+      }
+    }
+    console.warn("No se pudo colocar:", p, "(prueba subir tamaño)");
+    return false;
+  }
+
+  palabras.forEach(p => colocarPalabra(p));
+
+  const ABC = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ';
+  for (let r=0; r<filas; r++) {
+    for (let c=0; c<columnas; c++) {
+      if (!grid[r][c]) grid[r][c] = ABC[Math.floor(Math.random()*ABC.length)];
+    }
+  }
+
+  function renderGrid() {
+    gridContainer.innerHTML = "";
+    const table = document.createElement("table");
+    table.classList.add("sopa-tabla");
+
+    for (let i=0; i<filas; i++) {
+      const tr = document.createElement("tr");
+      for (let j=0; j<columnas; j++) {
+        const td = document.createElement("td");
+        td.textContent = grid[i][j];
+        td.classList.add("celda");
+        td.dataset.row = i;
+        td.dataset.col = j;
+        td.addEventListener("click", () => seleccionarCelda(td));
+        tr.appendChild(td);
+      }
+      table.appendChild(tr);
+    }
+    gridContainer.appendChild(table);
+  }
+
+  listaPalabras.innerHTML = "";
+  palabras.forEach(p => {
+    const li = document.createElement("li");
+    li.textContent = p;
+    li.id = "word-" + p;
+    listaPalabras.appendChild(li);
+  });
+
+  let seleccion = [];
+  let encontradas = [];
+
+  function seleccionarCelda(td) {
+  if (td.classList.contains("seleccionada") || td.classList.contains("encontrada")) return;
+
+  td.classList.add("seleccionada");
+  seleccion.push(td);
+
+  let palabraFormada = seleccion.map(celda => celda.textContent).join("");
+
+  if (palabras.includes(palabraFormada)) {
+    encontradas.push(palabraFormada);
+
+    // Marcar como encontradas permanentemente
+    seleccion.forEach(celda => {
+      celda.classList.remove("seleccionada");
+      celda.classList.add("encontrada");
+    });
+
+    document.getElementById("word-" + palabraFormada).style.textDecoration =
+      "line-through";
+    resultado.textContent = `¡Encontraste "${palabraFormada}"!`;
+
+    seleccion = [];
+  }
+
+  if (encontradas.length === palabras.length) {
+    resultado.textContent = "🎉 ¡Felicidades, encontraste todas las palabras!";
+  }
+}
+
+  renderGrid();
+  resultado.textContent = "Haz clic en las letras para formar las palabras.";
+});
