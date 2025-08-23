@@ -109,7 +109,106 @@ function mostrarInfo(tipo){
   `;
 }
 
-// Quizz
+// Quizz game
+
+const preguntas1 = [
+  {
+    texto: "¿Cuál es una de las principales causas de la contaminación del aire en las ciudades?",
+    opciones: ["Uso excesivo de automóviles", "Reciclaje de papel", "Consumo de frutas"],
+    correcta: "Uso excesivo de automóviles"
+  },
+  {
+    texto: "¿Qué sucede cuando los residuos se queman en espacios abiertos?",
+    opciones: ["Se purifica el aire", "Se genera contaminación del aire", "Se produce abono natural"],
+    correcta: "Se genera contaminación del aire"
+  },
+  {
+    texto: "¿Cuál es una consecuencia de la contaminación del agua?",
+    opciones: ["Aumento de peces en los ríos", "Enfermedades gastrointestinales", "Purificación automática del agua"],
+    correcta: "Enfermedades gastrointestinales"
+  },
+  {
+    texto: "¿Qué práctica ayuda a reducir la contaminación en los colegios?",
+    opciones: ["Tirar basura al piso", "Separar los residuos en tachos de colores", "Usar más plástico en el recreo"],
+    correcta: "Separar los residuos en tachos de colores"
+  },
+  {
+    texto: "¿Qué tipo de contaminación afecta directamente a la concentración de los estudiantes en clase?",
+    opciones: ["Contaminación acústica", "Contaminación lumínica", "Contaminación del agua"],
+    correcta: "Contaminación acústica"
+  },
+  {
+    texto: "¿Qué acción diaria contribuye a disminuir la contaminación ambiental?",
+    opciones: ["Reciclar botellas de plástico", "Dejar las luces encendidas", "Usar autos para trayectos cortos"],
+    correcta: "Reciclar botellas de plástico"
+  },
+  {
+    texto: "¿Qué consecuencia trae la acumulación de basura en patios escolares?",
+    opciones: ["Mejora la estética del colegio", "Proliferación de insectos y malos olores", "Se convierte en compost automáticamente"],
+    correcta: "Proliferación de insectos y malos olores"
+  },
+  {
+    texto: "¿Qué medida ayuda a reducir la contaminación en los ríos cercanos a nuestras comunidades?",
+    opciones: ["Arrojar residuos directamente al río", "Tratar adecuadamente las aguas residuales", "Usar detergentes en exceso"],
+    correcta: "Tratar adecuadamente las aguas residuales"
+  },
+  {
+    texto: "¿Qué problema puede causar la contaminación del aire en los estudiantes?",
+    opciones: ["Aumento de la energía", "Problemas respiratorios", "Mejor memoria"],
+    correcta: "Problemas respiratorios"
+  },
+  {
+    texto: "¿Cuál es una solución para disminuir la contaminación por plástico en los colegios?",
+    opciones: ["Reutilizar botellas y envases", "Comprar más productos desechables", "Usar bolsas plásticas en el recreo"],
+    correcta: "Reutilizar botellas y envases"
+  }
+  
+];
+
+let preguntaActual1 = 0;
+let puntaje1 = 0;
+
+function mostrarPregunta1() {
+  const pregunta = preguntas1[preguntaActual1];
+  document.getElementById("pregunta1").innerHTML = `<p><strong>${pregunta.texto}</strong></p>`;
+  const opcionesHTML = pregunta.opciones.map(opcion => {
+    return `<button onclick="verificarRespuesta1('${opcion}')">${opcion}</button>`;
+  }).join("");
+  document.getElementById("opciones1").innerHTML = opcionesHTML;
+  document.getElementById("resultado1").textContent = "";
+}
+
+function verificarRespuesta1(respuestaSeleccionada) {
+  const pregunta = preguntas1[preguntaActual1];
+  const resultado = document.getElementById("resultado1");
+
+  if (respuestaSeleccionada === pregunta.correcta) {
+    puntaje1++;
+    resultado.textContent = "✅ ¡Correcto!";
+    resultado.style.color = "green";
+  } else {
+    resultado.textContent = `❌ Incorrecto. La respuesta correcta era: ${pregunta.correcta}.`;
+    resultado.style.color = "red";
+  }
+
+  setTimeout(() => {
+    preguntaActual1++;
+    if (preguntaActual1 < preguntas1.length) {
+      mostrarPregunta1();
+    } else {
+      mostrarResultadoFinal1();
+    }
+  }, 1500);
+}
+
+function mostrarResultadoFinal1() {
+  document.getElementById("pregunta1").innerHTML = `<h3>¡Quizz terminado!</h3>`;
+  document.getElementById("opciones1").innerHTML = "";
+  document.getElementById("resultado1").textContent = `Tu puntaje: ${puntaje1} de ${preguntas1.length}`;
+  document.getElementById("resultado1").style.color = "#000";
+}
+
+// Quizz clasificacion
 const preguntas = [
   {
     texto: "¿Dónde se debe botar el papel?",
