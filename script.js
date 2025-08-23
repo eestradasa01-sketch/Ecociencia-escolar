@@ -411,7 +411,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (palabras.includes(palabraFormada)) {
     encontradas.push(palabraFormada);
 
-    // Marcar como encontradas permanentemente
     seleccion.forEach(celda => {
       celda.classList.remove("seleccionada");
       celda.classList.add("encontrada");
@@ -431,4 +430,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderGrid();
   resultado.textContent = "Haz clic en las letras para formar las palabras.";
+});
+
+//Crucigrama
+const palabras = [
+  { palabra: "RECICLAJE", x: 0, y: 0, dir: "across", pista: "Proceso de reutilizar materiales para reducir desechos." },
+  { palabra: "AGUA", x: 2, y: 0, dir: "down", pista: "Recurso natural esencial para la vida." },
+  { palabra: "BASURA", x: 0, y: 3, dir: "across", pista: "Residuos que deben gestionarse adecuadamente." },
+  { palabra: "OXIGENO", x: 5, y: 1, dir: "down", pista: "Elemento de la atmósfera necesario para respirar." },
+  { palabra: "NATURALEZA", x: 0, y: 6, dir: "across", pista: "Conjunto de seres vivos y elementos físicos del planeta." },
+  { palabra: "ENERGIA", x: 10, y: 0, dir: "across", pista: "Fuerza necesaria que puede provenir de fuentes renovables o no renovables." },
+  { palabra: "FAUNA", x: 2, y: 10, dir: "down", pista: "Conjunto de animales de una región o ecosistema." },
+  { palabra: "CONTAMINACION", x: 5, y: 5, dir: "across", pista: "Alteración negativa del medio ambiente." },
+  { palabra: "TIERRA", x: 12, y: 3, dir: "across", pista: "Planeta en el que vivimos." },
+  { palabra: "REFORESTACION", x: 0, y: 4, dir: "down", pista: "Acción de volver a sembrar árboles para recuperar bosques." }
+];
+
+// Crear la grilla
+const gridSize = 18; // tamaño del crucigrama
+const grid = document.getElementById("grid");
+grid.style.gridTemplateColumns = `repeat(${gridSize}, 30px)`;
+
+let celdas = [];
+
+// Crear celdas vacías
+for (let i = 0; i < gridSize * gridSize; i++) {
+  const input = document.createElement("input");
+  input.maxLength = 1;
+  input.dataset.index = i;
+  input.classList.add("celda");
+  grid.appendChild(input);
+  celdas.push(input);
+}
+
+// Colocar palabras
+palabras.forEach((item, idx) => {
+  let { palabra, x, y, dir } = item;
+  for (let i = 0; i < palabra.length; i++) {
+    let posX = dir === "across" ? x + i : x;
+    let posY = dir === "down" ? y + i : y;
+    let index = posY * gridSize + posX;
+    celdas[index].dataset.answer = palabra[i];
+  }
+});
+
+// Marcar celdas sin letra
+celdas.forEach(celda => {
+  if (!celda.dataset.answer) {
+    celda.classList.add("vacia");
+    celda.disabled = true; // 👈 opcional: bloquea las celdas negras
+  }
+});
+
+// Generar lista de pistas
+const listaPistas = document.getElementById("listaPistas");
+palabras.forEach((item, idx) => {
+  const li = document.createElement("li");
+  li.textContent = `${idx + 1}. ${item.pista}`;
+  listaPistas.appendChild(li);
+});
+
+// Verificar respuestas
+document.getElementById("verificar").addEventListener("click", () => {
+  let correcto = true;
+  celdas.forEach(celda => {
+    if (celda.dataset.answer) {
+      if (celda.value.toUpperCase() !== celda.dataset.answer) {
+        correcto = false;
+        celda.style.backgroundColor = "#f8d7da"; // rojo si está mal
+      } else {
+        celda.style.backgroundColor = "#d4edda"; // verde si está bien
+      }
+    }
+  });
+  document.getElementById("resultado").textContent = correcto
+    ? "✅ ¡Felicidades! Completaste el crucigrama."
+    : "❌ Algunas respuestas son incorrectas.";
 });
