@@ -76,7 +76,7 @@ button:hover {
 /* =========================
    QUIZ
 ========================= */
-.quiz {
+.quiz, .quiz-game {
   margin-top: 40px;
   padding: 20px;
   background-color: #e3f2fd;
