@@ -362,58 +362,49 @@ button:hover {
 /*Crucigrama*/
 #grid {
   display: grid;
-  grid-template-columns: repeat(15, 30px); /* ajusta tamaño y columnas */
   gap: 2px;
-  margin: 20px auto;
 }
 
-#grid input {
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  text-transform: uppercase;
-  border: 1px solid #333;
-  font-weight: bold;
-}
-
-#pistas {
-  margin-top: 20px;
-}
-
-#pistas ul {
-  list-style: none;
-  padding: 0;
-}
-
-#pistas li {
-  margin-bottom: 8px;
-}
-
-#verificar {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-#verificar:hover {
-  background-color: #218838;
+#crucigrama-container {
+  display: flex;
+  justify-content: center;
 }
 
 .celda {
+  position: relative;
   width: 30px;
   height: 30px;
   border: 1px solid #999;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.celda input {
+  width: 100%;
+  height: 100%;
+  border: none;
   text-align: center;
-  font-size: 18px;
-  background: white; /* por defecto: blancas si tienen letra */
+  font-size: 15px;
+  background: transparent;
+  outline: none;
+  text-transform: uppercase;
 }
 
 .celda.vacia {
-  background: grey; /* sin letra: negras */
+  background: grey;
 }
+
+.numero {
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  font-size: 8px;
+  font-weight: bold;
+  color: #222;
+  pointer-events: none;
+}
+
 
 
