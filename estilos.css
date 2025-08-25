@@ -325,23 +325,41 @@ button:hover {
 }
 
 /*sopa de letras*/
+.sopa-contenedor {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+  overflow-x: auto;
+}
+
 .sopa-tabla {
   border-collapse: collapse;
-  margin: 20px auto;
+  margin: auto;
+  table-layout: fixed;
+  display: table; 
+}
+
+.sopa-tabla tr {
+  display: table-row;
 }
 
 .sopa-tabla td {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   text-align: center;
   font-weight: bold;
   border: 1px solid #333;
   cursor: pointer;
-  user-select: none;
+  vertical-align: middle;
+  display: table-cell;
 }
 
 .sopa-tabla td:hover {
   background-color: #bde0fe;
+}
+
+.wordsearch-grid {
+  display: inline-block;
 }
 
 .wordsearch-words {
@@ -358,6 +376,15 @@ button:hover {
   background-color: lightgreen;
   font-weight: bold;
 }
+
+@media (max-width: 600px) {
+  .sopa-tabla td {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+}
+
 
 /*Crucigrama*/
 #grid {
@@ -405,6 +432,4 @@ button:hover {
   color: #222;
   pointer-events: none;
 }
-
-
 

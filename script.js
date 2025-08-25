@@ -401,9 +401,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let encontradas = [];
 
   function seleccionarCelda(td) {
-  if (td.classList.contains("seleccionada") || td.classList.contains("encontrada")) return;
+  if (td.classList.contains("seleccionada")) return;
+  if (!td.classList.contains("encontrada")){
+    td.classList.add("seleccionada");
+  }
 
-  td.classList.add("seleccionada");
   seleccion.push(td);
 
   let palabraFormada = seleccion.map(celda => celda.textContent).join("");
