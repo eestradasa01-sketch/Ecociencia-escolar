@@ -433,3 +433,24 @@ button:hover {
   pointer-events: none;
 }
 
+@media (max-width: 600px) {
+  #grid {
+    grid-template-columns: repeat(15, minmax(0, 1fr)) !important;
+    width: 100% !important;
+    max-width: 95vw; /* deja un margen lateral */
+  }
+
+  .celda {
+    aspect-ratio: 1 / 1;
+    width: 100%;   /* ahora se ajusta al grid */
+    height: auto;
+  }
+
+  .celda input {
+    font-size: clamp(10px, 4vw, 18px);
+  }
+
+  .numero {
+    font-size: clamp(6px, 2.5vw, 12px);
+  }
+}
