@@ -38,12 +38,12 @@ h3 {
   color: #2c3e50;
 }
 
-.causas, .consecuencias {
+.causas, .consecuencias, .tiempos {
   list-style-type: disc;
   padding-left: 20px;
 }
 
-.causas li, .consecuencias li {
+.causas li, .consecuencias li, .tiempos li {
   margin-bottom: 15px;
   line-height: 1.5;
 }
